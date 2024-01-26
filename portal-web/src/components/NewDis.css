@@ -1,0 +1,145 @@
+.NewDes{
+margin:4rem 6rem;
+z-index :-1;
+}
+
+.NewDes h1 {
+    font-size: 3.5rem;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 10rem; 
+text-decoration:  underline  black;
+  }
+
+.container {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoPortal {
+    height: 20rem;
+    width: 41rem;
+}
+
+
+.first-des{
+margin-top: 90px;
+    display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 4.5rem;
+}
+
+.des-text{
+    width: 45%;
+text-align: center;
+font-size: 2rem;
+
+}
+
+.des-text .h2{
+    
+    padding-bottom:1rem ;
+}
+
+.des-text p{
+    padding-top: 1rem;
+}
+
+.image{
+position: relative;
+width: 50%;
+display: flex;
+justify-content: space-between;
+z-index: 99;
+height: 60%;
+z-index: 0;
+}
+
+.image img {
+    width: 49%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: -1px 1px 62px -18px rgb(0, 0, 0, 0.19);
+    z-index: 0;
+}
+
+.image img:nth-child(2) {
+    position: absolute;
+    top: -10%;
+    right: 0;
+}
+
+.second-des{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4.5rem;
+    flex-direction: row-reverse;
+    margin-top: 20rem;
+}
+
+.third-des{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10rem;
+}
+
+.image1 {
+  
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 15%;
+    
+
+  }
+
+@media  screen and (max-width:850px) {
+    .NewDes{
+        margin: 4rem 6rem;
+    }
+    .second-des{
+            display: flex;
+            flex-direction: column-reverse;
+       
+        margin-top: 2.5rem;
+        }
+    .des-text{
+        width: 100%;
+    }
+    .image{
+        width: 100%;
+        margin: 1.8rem 0;
+        z-index: 0;
+    }
+    .image img{
+        height: 250px;
+    }
+    .first-des{
+        display: flex;
+        flex-direction: column-reverse;
+   
+    margin-top: 2.5rem;
+    }
+.third-des{
+    display: flex;
+    flex-direction: column-reverse;
+
+margin-top: 2.5rem;
+}
+.image1{
+    width: 100%;
+    margin: 1.8rem 0;
+}
+.image1 img{
+    height: 250px;
+}
+}
