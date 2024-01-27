@@ -10,6 +10,7 @@ const Navbar = ({ onSearch }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
   const location = useLocation();
+  const logged = window.localStorage.getItem("userLogged")
 
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
@@ -33,7 +34,7 @@ const Navbar = ({ onSearch }) => {
     };
   }, [prevScrollPos, visible]);
 
-  const excludePaths = ['/', '/politics', '/buisness', '/sports', '/entertainment'];
+  const excludePaths = ['/', '/politics', '/buisness', '/sports', '/entertainment', '/login', '/register'];
 
   return (
     <nav className={`NavbarItem ${visible ? '' : 'scrolled'}`}>
@@ -59,11 +60,18 @@ const Navbar = ({ onSearch }) => {
             </Link>
           </li>
         ))}
-        <li>
-          <Link type='button' className='nav-mobile' to='/login'>
-            Login
-          </Link>
-        </li>
+        {logged == "false" &&
+          <li>
+            <Link type='button' className='nav-mobile' to='/login'>
+              Login
+            </Link>
+          </li>}
+        {logged == "true" &&
+          <li>
+            <Link type='button' className='nav-mobile' to='/login' onClick={() => window.localStorage.setItem("userLogged", false)}>
+              Logout
+            </Link>
+          </li>}
       </ul>
     </nav>
   );

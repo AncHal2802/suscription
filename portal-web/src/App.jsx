@@ -17,7 +17,12 @@ import ResetPassword from "./components/reset_password";
 
 function App() {
   const [user, setLoginUser] = useState(null);
+  console.log(user);
   const [searchResults, setSearchResults] = useState([]);
+
+  const logged = window.localStorage.getItem("userLogged")
+  console.log(logged);
+
 
   const handleSearch = (query) => {
     console.log("Search query:", query);
@@ -30,7 +35,13 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={
+          logged == "true" ?
+            <Home />
+            :
+            <Login />
+        }
+        />
         <Route
           path="/top-heading"
           element={<TopHeadings searchResults={searchResults} />}
@@ -44,7 +55,6 @@ function App() {
         <Route path="/forgortpassword" element={<ForgotPassword />} />
         <Route path="/reset_password/:id/:token" element={<ResetPassword />} />
       </Routes>
-      <Footer />
     </div>
   );
 }

@@ -19,14 +19,6 @@ const Register = () => {
     reEnterPassword: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
-    }));
-  };
-
   const handleName = (e) => {
     let inputValue = e.target.value.replace(/[^a-zA-Z]/gi, "");
     setUser((prevUser) => ({ ...prevUser, name: inputValue }));
@@ -88,7 +80,7 @@ const Register = () => {
   };
 
   return (
-    <div className="registerPage flexDiv">
+    <div className="registerPage flexDiv ">
       <div className="contanier flexDiv">
         <div className="videoDiv">
           <img src={""} alt="Logo Image" className="absolut" />

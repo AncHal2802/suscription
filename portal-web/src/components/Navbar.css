@@ -61,7 +61,7 @@
 }
 
 .nav-mobile {
-  display: none;
+  display: block;
 }
 
 button {

@@ -59,15 +59,20 @@ const Login = ({ setLoginUser }) => {
 
   const login = (e) => {
     e.preventDefault();
-    if (!emailPattern.test(user.email)) {
+    const { email, password } = user;
+
+    if (!emailPattern.test(email)) {
       setEmailError(true);
-    } else if (user.password.length < 6) {
+    } else if (password.length < 6) {
       setPassErr(true);
     } else {
       axios.post("http://localhost:3000/login", user).then((res) => {
         alert(res.data.message);
-        setLoginUser(res.data.user);
-        navigate("/");
+        if (res.data.status == "ok") {
+          window.localStorage.setItem("userLogged", true)
+          setLoginUser(res.data.user);
+          navigate("/");
+        }
       });
     }
   };

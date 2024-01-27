@@ -20,7 +20,7 @@ app.use(cors());
 
 mongoose.connect(
   // process.env.MONGO_URL,
-  "mongodb+srv://jaibn1234:jaibn1234@cluster0.uy9tkru.mongodb.net/portal2?retryWrites=true&w=majority",
+  "mongodb+srv://newp:newp@newspcluster.qorb0be.mongodb.net/newsp?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -57,19 +57,18 @@ const userSchema = new mongoose.Schema(
 const User = new mongoose.model("User", userSchema);
 
 //Routes
-app.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  User.findOne({ email: email }, (err, user) => {
-    if (user) {
-      if (password === user.password) {
-        res.send({ message: "Login Successfull", user: user });
-      } else {
-        res.send({ message: "Password didn't match" });
-      }
-    } else {
-      res.send({ message: "User not registered", error: err });
-    }
-  });
+app.post("/login", async (req, res) => {
+  const { email, password } = await req.body;
+  const user = await User.findOne({ email: email });
+  // console.log(user);
+  if (!user) {
+    return res.send({ message: "User not registered" });
+  }
+  if (password === user.password) {
+    res.send({ message: "Login Successfull", status: "ok", user: user });
+  } else {
+    res.send({ message: "Password didn't match" });
+  }
 });
 
 app.post("/register", (req, res) => {
@@ -113,15 +112,15 @@ app.post("/forgortpassword", async (req, res) => {
 
   const url = `http://localhost:3000/reset_password/${user._id}/${token}`;
   const emailHtml = `<h2>Click to reset password : ${url}</h2>`;
-  
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
-    port: 587,
+    port: 465,
     secure: true,
     auth: {
-      user: "it24img@gmail.com",
-      pass: "fvfh msrl wuru ulkq",
+      user: "thenewsportal2023@gmail.com",
+      pass: "uzxjzmwhvbmjurio",
     },
   });
 
@@ -162,6 +161,6 @@ app.post('/reset-password/:id/:token', async (req, res) => {
 })
 
 
-app.listen(3001, () => {
-  console.log("BE started at port 3001");
+app.listen(3000, () => {
+  console.log("BE started at port 3000");
 });

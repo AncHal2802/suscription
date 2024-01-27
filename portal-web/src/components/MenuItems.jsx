@@ -30,9 +30,5 @@ export const MenuItems = [
         cName :"nav-links",
         icon :"fa-solid fa-tv",
     },
-    {
-        title : 'Sign-Up',
-        url : '/sign-up',
-        cName :"nav-mobile",
-    },
+   
 ]
