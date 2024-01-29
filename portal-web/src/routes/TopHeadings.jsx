@@ -1,8 +1,9 @@
-// TopHeadings.jsx
+
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   padding: 20px;
@@ -47,8 +48,6 @@ const StyledButton = styled.a`
   background-color: #2ecc71;
   color: #fff;
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
@@ -59,7 +58,7 @@ const StyledButton = styled.a`
   }
 `;
 
-const TopHeadings = ({onSearch}) => {
+const TopHeadings = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
@@ -71,7 +70,8 @@ const TopHeadings = ({onSearch}) => {
       ? `https://newsapi.org/v2/everything?q=${query}&apiKey=13aa3840ad6542d1b4f13aa762e81db9`
       : 'https://newsapi.org/v2/top-headlines?country=us&apiKey=13aa3840ad6542d1b4f13aa762e81db9';
 
-    axios.get(apiUrl)
+    axios
+      .get(apiUrl)
       .then((response) => {
         console.log(response);
         setSearchResults(response.data.articles);
@@ -80,14 +80,13 @@ const TopHeadings = ({onSearch}) => {
         console.error(error);
       });
   };
-
   const handleSearch = (query) => {
     getNews(query);
   };
 
   return (
     <>
-      <Navbar onSearch={handleSearch} />
+      <Navbar onSearch={handleSearch}/>
       <Container>
         <CardContainer>
           {searchResults.map((value, index) => (
@@ -95,10 +94,14 @@ const TopHeadings = ({onSearch}) => {
               <CardImage src={value.urlToImage} alt="News" />
               <CardBody>
                 <h5>{value.title}</h5>
-                <p>{value.description}</p>
-                <StyledButton href={value.url} target="_blank" rel="noopener noreferrer">
-                  Read More
-                </StyledButton>
+                <Link
+                  to={`/newsDetails/${index}/${encodeURIComponent(value.title)}/${encodeURIComponent(value.urlToImage)}`}
+                  state={{ articleData: value }}
+                >
+                  <StyledButton target="_blank" rel="noopener noreferrer">
+                    More
+                  </StyledButton>
+                </Link>
               </CardBody>
             </Card>
           ))}

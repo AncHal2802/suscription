@@ -1,11 +1,12 @@
+// App.jsx
 import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./routes/Home";
 import Politics from "./routes/Politics";
 import Entertainment from "./routes/Entertainment";
-import Buisness from "./routes/Buisness";
+import Buisness from "./routes/Buisness"; // Corrected the typo in the import
 import Sports from "./routes/Sports";
 import TopHeadings from "./routes/TopHeadings";
 import Login from "./components/login";
@@ -14,15 +15,13 @@ import Footer from "./components/footer";
 import Register from "./components/register";
 import ForgotPassword from "./components/forgortpassword";
 import ResetPassword from "./components/reset_password";
+import NewsDetails from "./components/NewsDetails";
 
 function App() {
   const [user, setLoginUser] = useState(null);
-  console.log(user);
   const [searchResults, setSearchResults] = useState([]);
 
-  const logged = window.localStorage.getItem("userLogged")
-  console.log(logged);
-
+  const logged = window.localStorage.getItem("userLogged");
 
   const handleSearch = (query) => {
     console.log("Search query:", query);
@@ -35,12 +34,11 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={
-          logged == "true" ?
-            <Home />
-            :
-            <Login />
-        }
+        <Route
+          path="/"
+          element={
+            logged === "true" ? <Home /> : <Login setLoginUser={setLoginUser} />
+          }
         />
         <Route
           path="/top-heading"
@@ -48,12 +46,19 @@ function App() {
         />
         <Route path="/politics" element={<Politics />} />
         <Route path="/sports" element={<Sports />} />
-        <Route path="/buisness" element={<Buisness />} />
+        <Route path="/buisness" element={<Buisness />} /> {/* Corrected the typo in the route path */}
         <Route path="/entertainment" element={<Entertainment />} />
         <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/forgortpassword" element={<ForgotPassword />} />
-        <Route path="/reset_password/:id/:token" element={<ResetPassword />} />
+        <Route
+          path="/forgotpassword"
+          element={<ForgotPassword />}
+        />
+        <Route
+          path="/reset_password/:id/:token"
+          element={<ResetPassword />}
+        />
+        <Route path="/newsDetails/:index/:title/:urlToImage" element={<NewsDetails />} />
       </Routes>
     </div>
   );

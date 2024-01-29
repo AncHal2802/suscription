@@ -20,7 +20,7 @@ app.use(cors());
 
 mongoose.connect(
   // process.env.MONGO_URL,
-  "mongodb+srv://newp:newp@newspcluster.qorb0be.mongodb.net/newsp?retryWrites=true&w=majority",
+  "mongodb+srv://jaibn1234:jaibn1234@jaibn1234.9nt3iqv.mongodb.net/DB?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

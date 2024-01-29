@@ -1,59 +1,90 @@
-import React from 'react';
-import styled from 'styled-components';
 
-const Card1 = () => {
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import Navbar from '../components/Navbar';
+import axios from 'axios';
+
+const Container = styled.div`
+  padding: 20px;
+  margin-top: 6rem;
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const Card = styled.div`
+  width: 300px;
+  height: 400px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const CardImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+`;
+
+const CardBody = styled.div`
+  padding: 20px;
+  text-align: center;
+`;
+
+const StyledButton = styled.a`
+  display: inline-block;
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #27ae60;
+  }
+`;
+
+const Card1 = (data) => {
+ 
   return (
-    <Card> <div className="card text-bg-dark">
-      <img src="your-image-source.jpg" className="card-img" alt="Card" />
-      <div className="card-img-overlay">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">
-          This is a wider card with supporting text below as a natural lead-in to additional content.
-          This content is a little bit longer.
-        </p>
-        <p className="card-text">
-          <small>Last updated 3 mins ago</small>
-        </p>
-      </div>
-    </div>
-    </Card>
-   
+    <>
+      <Navbar />
+      <Container>
+        <CardContainer>
+            <a key={index} href={data.url} target="_blank" rel="noopener noreferrer">
+              <Card>
+                <CardImage src={data.urlToImage} alt="News" />
+                <CardBody>
+                  <h5>{data.title}</h5>
+                  <p>{data.description}</p>
+                  <Link to={{ pathname: "/newsDetails", state: { articleData: value } }}>
+                  <StyledButton target="_blank" rel="noopener noreferrer">
+                    Read More
+                  </StyledButton>
+                </Link>
+                </CardBody>
+              </Card>
+            </a>
+          
+        </CardContainer>
+      </Container>
+    </>
   );
 };
 
 export default Card1;
-
-const Card = styled.div`
-  position: relative;
-  display: inline-block;
-  width: 80%px; /* Set the desired width for your card */
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  overflow: hidden;
-`;
-
-const CardImg = styled.img`
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid #ccc;
-`;
-
-const CardOverlay = styled.div`
-  padding: 15px;
-`;
-
-const CardTitle = styled.h5`
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-`;
-
-const CardText = styled.p`
-  font-size: 1rem;
-  margin-bottom: 15px;
-`;
-
-const SmallText = styled.small`
-  font-size: 0.8rem;
-  color: #777;
-`;
