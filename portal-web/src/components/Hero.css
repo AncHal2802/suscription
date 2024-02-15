@@ -36,6 +36,7 @@
   }
   
   .hero-text .show {
+    
     text-decoration: none;
     background-color: white;
     padding: 1rem 2rem;
@@ -44,13 +45,17 @@
     letter-spacing: 2px;
     color: black;
     font-weight: bold;
+    margin: 2px;
 
   }
   .hero-text .show:hover{
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
   }
+
+
   
+
   @media screen and (max-width:555px) {
     .hero-text h1{
         padding: 10px 20px;

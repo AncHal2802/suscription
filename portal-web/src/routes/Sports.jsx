@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   padding: 20px;
@@ -87,12 +88,20 @@ const Sports = () => {
               <Card>
                 <CardImage src={value.urlToImage} alt="News" />
                 <CardBody>
-                  <h5>{value.title}</h5>
-                  <p>{value.description}</p>
-                 
+                  <h5>{value.title}</h5> 
+                  <h6>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(value.publishedAt))}</h6>                 
                 </CardBody>
+                <Link
+                  to={`/newsDetails/${index}/${encodeURIComponent(value.title)}/${encodeURIComponent(value.urlToImage)}/${encodeURIComponent(value.description)}`}
+                  state={{ articleData: value }}
+                >
+                  <StyledButton target="_blank" rel="noopener noreferrer">
+                    More
+                  </StyledButton>
+                </Link>
               </Card>
             </a>
+            
           ))}
         </CardContainer>
       </Container>

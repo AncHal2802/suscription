@@ -20,7 +20,7 @@ app.use(cors());
 
 mongoose.connect(
   // process.env.MONGO_URL,
-  "mongodb+srv://jaibn1234:jaibn1234@jaibn1234.9nt3iqv.mongodb.net/DB?retryWrites=true&w=majority",
+  "mongodb+srv://newp:newp@newspcluster.qorb0be.mongodb.net/newsp?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -110,7 +110,7 @@ app.post("/forgortpassword", async (req, res) => {
     expiresIn: "1d",
   });
 
-  const url = `http://localhost:3000/reset_password/${user._id}/${token}`;
+  const url = `http://localhost:3001/reset_password/${user._id}/${token}`;
   const emailHtml = `<h2>Click to reset password : ${url}</h2>`;
 
   const transporter = nodemailer.createTransport({
@@ -161,6 +161,6 @@ app.post('/reset-password/:id/:token', async (req, res) => {
 })
 
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("BE started at port 3000");
 });

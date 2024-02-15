@@ -24,10 +24,12 @@
     "mongoose": "^8.1.0",
     "nodemailer": "^6.9.8",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.21.1",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^3.0.1",
+    "reactstrap": "^9.2.2",
     "styled-components": "^6.1.6"
   },
   "devDependencies": {

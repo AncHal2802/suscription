@@ -10,12 +10,12 @@ import Buisness from "./routes/Buisness"; // Corrected the typo in the import
 import Sports from "./routes/Sports";
 import TopHeadings from "./routes/TopHeadings";
 import Login from "./components/login";
-import SearchBar from "./components/SearchBar";
-import Footer from "./components/footer";
 import Register from "./components/register";
 import ForgotPassword from "./components/forgortpassword";
 import ResetPassword from "./components/reset_password";
 import NewsDetails from "./components/NewsDetails";
+
+import PricingApp from "./components/PricingApp"
 
 function App() {
   const [user, setLoginUser] = useState(null);
@@ -46,7 +46,7 @@ function App() {
         />
         <Route path="/politics" element={<Politics />} />
         <Route path="/sports" element={<Sports />} />
-        <Route path="/buisness" element={<Buisness />} /> {/* Corrected the typo in the route path */}
+        <Route path="/buisness" element={<Buisness />} />
         <Route path="/entertainment" element={<Entertainment />} />
         <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
         <Route path="/register" element={<Register />} />
@@ -58,7 +58,9 @@ function App() {
           path="/reset_password/:id/:token"
           element={<ResetPassword />}
         />
-        <Route path="/newsDetails/:index/:title/:urlToImage" element={<NewsDetails />} />
+        <Route path="/newsDetails/:index/:title/:urlToImage/:description" element={<NewsDetails />} />
+        <Route path="/pricing-app" element={<PricingApp />} />
+
       </Routes>
     </div>
   );

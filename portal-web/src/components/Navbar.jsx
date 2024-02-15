@@ -5,6 +5,8 @@ import { MenuItems } from './MenuItems';
 import './Navbar.css';
 import Login from './login';
 import SearchBar from './SearchBar';
+import PricingApp from './PricingApp';
+
 
 const Navbar = ({ onSearch }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -34,7 +36,7 @@ const Navbar = ({ onSearch }) => {
     };
   }, [prevScrollPos, visible]);
 
-  const excludePaths = ['/', '/politics', '/buisness', '/sports', '/entertainment', '/login', '/register'];
+  const excludePaths = ['/', '/politics', '/buisness', '/sports', '/entertainment', '/login', '/register','/newsDetails','/pricing-app'];
 
   return (
     <nav className={`NavbarItem ${visible ? '' : 'scrolled'}`}>
@@ -72,6 +74,11 @@ const Navbar = ({ onSearch }) => {
               Logout
             </Link>
           </li>}
+          <li>
+ 
+
+</li>
+
       </ul>
     </nav>
   );
