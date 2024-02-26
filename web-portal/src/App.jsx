@@ -15,7 +15,8 @@ import ForgotPassword from "./components/forgortpassword";
 import ResetPassword from "./components/reset_password";
 import NewsDetails from "./components/NewsDetails";
 
-import PricingApp from "./components/PricingApp"
+
+import Premium from "./components/Premium";
 
 function App() {
   const [user, setLoginUser] = useState(null);
@@ -59,7 +60,8 @@ function App() {
           element={<ResetPassword />}
         />
         <Route path="/newsDetails/:index/:title/:urlToImage/:description" element={<NewsDetails />} />
-        <Route path="/pricing-app" element={<PricingApp />} />
+        <Route path="/premium" element={<Premium />} />
+        
 
       </Routes>
     </div>

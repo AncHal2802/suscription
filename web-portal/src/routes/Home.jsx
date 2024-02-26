@@ -17,7 +17,7 @@ const Home = () => {
   btnText="Explore"
   url='top-heading'
   btnText2="Subscribe"
-  url2='pricing-app'
+  url2='premium'
   btnClass="show"
   
   />

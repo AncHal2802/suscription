@@ -1,9 +1,11 @@
 import React from "react";
 import "./PricingCard.css";
 import { Link } from "react-router-dom";
+
 const PricingCard = ({ title, price, articles, users, commentSection }) => {
   const handleReadMoreClick = () => {
-    window.location.href = externalLink; }
+    window.location.href = externalLink;
+   };
   return (
     <div className="PricingCard">
       <header>
@@ -16,9 +18,9 @@ const PricingCard = ({ title, price, articles, users, commentSection }) => {
         <div className="card-users-allowed">{users} users features</div>
         <div className="card-comment-section">Interact through{commentSection}</div>
       </div>
-      <button className="card-btn" onClick={handleReadMoreClick}>
-        READ MORE
-      </button>
+      <Link type='button' className='nav-mobile' to='https://rzp.io/l/mOkz3PTmWE' onClick={() => window.localStorage.setItem("userLogged", false)}>
+        Read More
+        </Link >
     </div>
   );
 };

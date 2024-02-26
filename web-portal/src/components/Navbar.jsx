@@ -5,7 +5,7 @@ import { MenuItems } from './MenuItems';
 import './Navbar.css';
 import Login from './login';
 import SearchBar from './SearchBar';
-import PricingApp from './PricingApp';
+import Premium from './Premium';
 
 
 const Navbar = ({ onSearch }) => {
@@ -36,7 +36,7 @@ const Navbar = ({ onSearch }) => {
     };
   }, [prevScrollPos, visible]);
 
-  const excludePaths = ['/', '/politics', '/buisness', '/sports', '/entertainment', '/login', '/register','/newsDetails','/pricing-app'];
+  const excludePaths = ['/', '/politics', '/buisness', '/sports', '/entertainment', '/login', '/register','/newsDetails','/premium'];
 
   return (
     <nav className={`NavbarItem ${visible ? '' : 'scrolled'}`}>
